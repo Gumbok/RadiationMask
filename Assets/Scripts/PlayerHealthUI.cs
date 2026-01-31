@@ -28,7 +28,6 @@ public sealed class PlayerHealthUI : MonoBehaviour
         if (!heartPrefab)
         {
             enabled = false;
-            return;
         }
     }
 

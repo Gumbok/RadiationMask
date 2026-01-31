@@ -14,6 +14,7 @@ namespace Game.Core
         [SerializeField] private FirstPersonMovement movement;
         [SerializeField] private PlayerInputReader inputReader;
         [SerializeField] private PlayerHealth health;
+        [SerializeField] private PlayerMoney money;
         //[SerializeField] private PlayerWandCaster wandCaster;
         [SerializeField] private PlayerXP playerXP;
         [SerializeField] private FirstPersonInteractor interactor;
@@ -34,6 +35,7 @@ namespace Game.Core
         public PlayerInputReader InputReader => inputReader;
 
         public PlayerHealth Health => health;
+        public PlayerMoney Money => money;
 
         //public PlayerWandCaster WandCaster => wandCaster;
 

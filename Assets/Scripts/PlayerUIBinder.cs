@@ -13,12 +13,15 @@ namespace Game.UI
         [SerializeField] private InteractionPromptUI interactionPromptUI;
         [SerializeField] private ExpUIController expUIController;
         [SerializeField] private PlayerHealthUI playerHealthUI;
+        [SerializeField] private PlayerMoneyUI playerMoneyUI;
+        
 
         private void Awake()
         {
             if (!interactionPromptUI) interactionPromptUI = GetComponentInChildren<InteractionPromptUI>(true);
             if (!expUIController) expUIController = GetComponentInChildren<ExpUIController>(true);
             if (!playerHealthUI) playerHealthUI = GetComponentInChildren<PlayerHealthUI>(true);
+            if (!playerHealthUI) playerMoneyUI = GetComponentInChildren<PlayerMoneyUI>(true);
         }
 
         private void Start()
@@ -39,6 +42,9 @@ namespace Game.UI
 
             if (playerHealthUI)
                 playerHealthUI.BindPlayer(player.Health);
+            
+            if (playerMoneyUI)
+                playerMoneyUI.BindPlayer(player.Money);
 
         }
     }
