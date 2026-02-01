@@ -97,16 +97,16 @@ public class Radiation : MonoBehaviour
                 switch (radiationType)
                 {
                     case RadiationType.Low:
-                        damageInfo = new DamageInfo().WithAmount(1);
+                        damageInfo = new DamageInfo(1, this.gameObject);
                         break;
                     case RadiationType.Medium:
-                        damageInfo = new DamageInfo().WithAmount(2);
+                        damageInfo = new DamageInfo(2, this.gameObject);
                         break;
                     case RadiationType.High:
-                        damageInfo = new DamageInfo().WithAmount(4);
+                        damageInfo = new DamageInfo(4, this.gameObject);
                         break;
                     default:
-                        damageInfo = new DamageInfo().WithAmount(0);
+                        damageInfo = new DamageInfo(0, this.gameObject);
                         break;
                 }
 
