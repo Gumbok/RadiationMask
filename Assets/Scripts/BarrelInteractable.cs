@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BarrelInteractable : MonoBehaviour, IInteractable, IHoldInteractable
 {
-    float IHoldInteractable.HoldSeconds => .3f;
+    float IHoldInteractable.InteractionHoldTimes => .3f;
 
     bool IInteractable.CanInteract(in Interactor interactor)
     {

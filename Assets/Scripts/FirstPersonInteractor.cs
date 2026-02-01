@@ -68,7 +68,7 @@ namespace Game.FirstPerson
 
             if (target is IHoldInteractable h)
             {
-                holdSeconds = Mathf.Max(0.05f, h.HoldSeconds);
+                holdSeconds = Mathf.Max(0.05f, h.InteractionHoldTimes);
                 isHold = holdSeconds > 0.05f;
             }
 
