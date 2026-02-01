@@ -42,7 +42,7 @@ namespace Jonas.UI
         {
             if (eventData is AxisEventData axisEvent && axisEvent.moveVector.magnitude > 0)
             {
-                AudioSource.PlayOneShot(hoverClip);
+                if(!AudioSource.isPlaying) AudioSource.PlayOneShot(hoverClip);
                 if (_activeCoroutine != null) StopCoroutine(_activeCoroutine);
                 _activeCoroutine = StartCoroutine(PulseRoutine());
             }
@@ -50,7 +50,7 @@ namespace Jonas.UI
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            AudioSource.PlayOneShot(hoverClip);
+            if(!AudioSource.isPlaying) AudioSource.PlayOneShot(hoverClip);
             if (_activeCoroutine != null) StopCoroutine(_activeCoroutine);
             _activeCoroutine = StartCoroutine(PulseRoutine());
         }
@@ -59,12 +59,12 @@ namespace Jonas.UI
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            AudioSource.PlayOneShot(clickClip);
+            if(!AudioSource.isPlaying) AudioSource.PlayOneShot(clickClip);
         }
 
         public void OnSubmit(BaseEventData eventData)
         {
-            AudioSource.PlayOneShot(clickClip);
+            if(!AudioSource.isPlaying) AudioSource.PlayOneShot(clickClip);
         }
         
         private IEnumerator PulseRoutine()
