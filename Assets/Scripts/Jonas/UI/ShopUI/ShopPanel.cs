@@ -1,27 +1,31 @@
 using Game.FirstPerson;
-using Jonas.UI.ShopUI;
 using UnityEngine;
 
-public class ShopPanel : MonoBehaviour, IHoldInteractable
+namespace Jonas.UI.ShopUI
 {
-    [Tooltip("Parent UI GameObject with the shop interface.")]
-    public ShopUI shopUI;
+    public class ShopPanel : MonoBehaviour, IHoldInteractable
+    {
+        [Tooltip("Parent UI GameObject with the shop interface.")]
+        public ShopUI shopUI;
+
+        [SerializeField] private float interactionHoldTime = 0.25f;
     
-    //can open Shop Panel
-    public bool CanInteract(in Interactor interactor)
-    {
-        return !shopUI.gameObject.activeSelf;
-    }
+        //can open Shop Panel
+        public bool CanInteract(in Interactor interactor)
+        {
+            return !shopUI.gameObject.activeSelf;
+        }
 
-    public string GetPrompt(in Interactor interactor)
-    {
-        throw new System.NotImplementedException();
-    }
+        public string GetPrompt(in Interactor interactor)
+        {
+            return "Open Shop";
+        }
 
-    public void Interact(in Interactor interactor)
-    {
-        shopUI.OpenShop();
-    }
+        public void Interact(in Interactor interactor)
+        {
+            shopUI.OpenShop();
+        }
 
-    public float HoldSeconds { get; }
+        public float InteractionHoldTimes => interactionHoldTime;
+    }
 }

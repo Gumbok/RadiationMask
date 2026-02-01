@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Jonas.UI.ShopUI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,7 +22,7 @@ namespace Jonas.UI.MainUI
         public Button creditsButton;
 
         //start the game
-        public void StartGame()
+        public void StartNewGame()
         {
             SceneManager.LoadScene(startSceneInt);
         }

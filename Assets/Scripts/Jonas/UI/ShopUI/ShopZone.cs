@@ -6,13 +6,6 @@ namespace Jonas.UI.ShopUI
     {
         [Tooltip("Parent UI GameObject with the shop interface.")]
         public ShopUI shopUI;
-
-        public void OnTriggerEnter(Collider other)
-        {
-            if (!other.tag.Equals("Player")) return;
-            
-            shopUI.OpenShop();
-        }
         
         public void OnTriggerExit(Collider other)
         {

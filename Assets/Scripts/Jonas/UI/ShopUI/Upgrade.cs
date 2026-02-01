@@ -8,5 +8,11 @@ namespace Jonas.UI.ShopUI
         public AnimationCurve cost;
         public int currentUpgradeLevel;
         public int maxUpgradeLevel;
+
+        //needs some saving code, value is persistent between sessions
+        public void SetCurrentUpgradeLevel(int level)
+        {
+            currentUpgradeLevel = level;
+        }
     }
 }

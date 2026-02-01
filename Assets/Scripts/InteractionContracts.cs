@@ -26,7 +26,7 @@ namespace Game.FirstPerson
     /// <summary>Optional: per-object hold duration override.</summary>
     public interface IHoldInteractable : IInteractable
     {
-        float HoldSeconds { get; }
+        float InteractionHoldTimes { get; }
     }
 
     /// <summary>Optional: hover callbacks (separate from highlight so you can play sounds, etc.).</summary>

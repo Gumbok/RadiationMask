@@ -21,6 +21,8 @@ namespace Jonas.UI.ShopUI
         }
         [SerializeField] private TMP_Text upgradeNameText;
         [SerializeField] private TMP_Text upgradeCostText;
+        [SerializeField] private TMP_Text upgradeCurrentLevel;
+        [SerializeField] private TMP_Text upgradeNextLevel;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         public void Initialize(Upgrade upgrade, PlayerMoney playerMoney, UpgradeManager upgradeManager)
@@ -42,7 +44,7 @@ namespace Jonas.UI.ShopUI
             UpdateButton();
         }
 
-        //Check if Upgrade can be done
+        //Check if Upgrade can be done, show correct Cost and Level
         public void UpdateButton()
         {
             if (_upgrade.currentUpgradeLevel == _upgrade.maxUpgradeLevel) DisableButton();
@@ -50,6 +52,9 @@ namespace Jonas.UI.ShopUI
             
             upgradeNameText.text = _upgrade.name;
             upgradeCostText.text = ((int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel+1)).ToString();
+            upgradeCurrentLevel.text = _upgrade.currentUpgradeLevel.ToString();
+            int nextLevel = (_upgrade.currentUpgradeLevel != _upgrade.maxUpgradeLevel) ? _upgrade.currentUpgradeLevel + 1 : _upgrade.currentUpgradeLevel;
+            upgradeNextLevel.text = nextLevel.ToString();
             
             EnableButton();
         }
@@ -57,11 +62,14 @@ namespace Jonas.UI.ShopUI
         private void EnableButton()
         {
             Button.enabled = true;
+            Button.interactable = true;
+            Button.onClick.AddListener(IncreaseUpdateLevel);
         }
         
         private void DisableButton()
         {
-            Button.enabled = false;
+            Button.interactable = false;
+            Button.onClick.RemoveListener(IncreaseUpdateLevel);
         }
     }
 }
