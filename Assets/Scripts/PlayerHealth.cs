@@ -100,9 +100,12 @@ public sealed class PlayerHealth : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(new HealthChangedInfo(prev, next, MaxFragments, HealthChangeReason.Damage, damageInfo));
 
         if (prev > 0 && next <= 0)
+        {
             OnDied?.Invoke(damageInfo);
 
         SceneManager.LoadScene("StartMenu");
+        }
+
     }
 
     public int Heal(int amount)

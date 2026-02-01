@@ -9,6 +9,7 @@ namespace Jonas.UI.ShopUI
     {
         [Tooltip("Will set current upgrade levels to 0 if true. Set to false to have persistent levels when loading new levels.")]
         public bool resetUpgradeLevel = true;
+        public Transform upgradesTransform;
         
         public List<Upgrade> upgrades = new ();
         public GameObject upgradeButtonTemplate;
@@ -28,16 +29,14 @@ namespace Jonas.UI.ShopUI
 
         private void Awake()
         {
-            Transform buttonParent = upgradeButtonTemplate.transform.parent;
             foreach (Upgrade upgrade in upgrades)
             {
                 if(resetUpgradeLevel) upgrade.SetCurrentUpgradeLevel(0); //TODO <- hardcoded for testing, will be problematic for loading new levels
                 
-                GameObject newUpgradeButton = Instantiate(upgradeButtonTemplate, buttonParent);
+                GameObject newUpgradeButton = Instantiate(upgradeButtonTemplate, upgradesTransform);
                 newUpgradeButton.GetComponent<UpgradeButton>().Initialize(upgrade, PlayerMoney,this);
                 _buttonDict.Add(upgrade, newUpgradeButton.GetComponent<Button>());
             }
-            Destroy(upgradeButtonTemplate);
         }
 
         //Select FirstButton for Interaction
