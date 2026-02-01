@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 8
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -25,8 +25,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 10
-      value: 100
+      time: 20
+      value: 30
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -37,4 +37,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentUpgradeLevel: 0
-  maxUpgradeLevel: 10
+  maxUpgradeLevel: 30

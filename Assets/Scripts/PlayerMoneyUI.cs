@@ -8,9 +8,9 @@ public sealed class PlayerMoneyUI : MonoBehaviour
     private PlayerMoney _playerMoney;
     public TextMeshProUGUI moneyText;
 
-    public void BindPlayer(PlayerMoney playerHealth)
+    public void BindPlayer(PlayerMoney playerMoney)
     {
-        _playerMoney = playerHealth;
+        _playerMoney = playerMoney;
         _playerMoney.OnMoneyChanged += OnMoneyChanged;  
         Refresh();
     }

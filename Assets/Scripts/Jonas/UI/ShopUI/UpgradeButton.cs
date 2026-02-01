@@ -51,21 +51,22 @@ namespace Jonas.UI.ShopUI
         public void IncreaseUpdateLevel()
         {
             if (_upgrade.currentUpgradeLevel == _upgrade.maxUpgradeLevel) return;
-            if (_playerMoney.money < (int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel+1)) return;
+            if (_playerMoney.money < (int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel)) return;
             _increaseLevel = true;
         }
 
         private void MakePurchase()
         {
             _upgradeManager.upgrades.Find(x => x.name.Equals(_upgrade.name)).currentUpgradeLevel++;
-            _playerMoney.Purchase((int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel+1));
+            _playerMoney.Purchase((int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel));
+            UpdateButton();
         }
 
         //Check if Upgrade can be done, show correct Cost and Level
         public void UpdateButton()
         {
             upgradeNameText.text = _upgrade.name;
-            upgradeCostText.text = ((int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel+1)).ToString();
+            upgradeCostText.text = ((int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel)).ToString();
             upgradeCurrentLevel.text = _upgrade.currentUpgradeLevel.ToString();
             int nextLevel = (_upgrade.currentUpgradeLevel != _upgrade.maxUpgradeLevel) ? _upgrade.currentUpgradeLevel + 1 : _upgrade.currentUpgradeLevel;
             upgradeNextLevel.text = nextLevel.ToString();
@@ -76,7 +77,7 @@ namespace Jonas.UI.ShopUI
                 return;
             }
 
-            if (_playerMoney.money < (int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel + 1))
+            if (_playerMoney.money < (int)_upgrade.cost.Evaluate(_upgrade.currentUpgradeLevel))
             {
                 DisableButton();
                 return;
