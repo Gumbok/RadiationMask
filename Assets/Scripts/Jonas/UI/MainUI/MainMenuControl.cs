@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
+using Jonas.UI.ShopUI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //provides functions to control the main menu
 namespace Jonas.UI.MainUI
@@ -8,35 +12,27 @@ namespace Jonas.UI.MainUI
     {
         [Tooltip("Integer of the start scene, which is loaded with the game start.")]
         public int startSceneInt = 1;
-        [Tooltip("List of sub menus.")]
-        public GameObject[] subMenus;
         [Tooltip("Parent for the main menu.")]
         public GameObject mainMenu;
-        [Tooltip("Sound played when clicking a button")]
-        public AudioClip buttonClick;
-        
-        private AudioSource _audioSource;
-        private AudioSource AudioSource
-        {
-            get
-            {
-                if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
-                return _audioSource;
-            }
-        }
-        
-        
+        [Tooltip("Parent for the main menu.")]
+        public GameObject creditsMenu;
+        [Tooltip("Parent for the main menu.")]
+        public Button creditsBackButton;
+        [Tooltip("Parent for the main menu.")]
+        public Button creditsButton;
+
         //start the game
-        public void StartGame()
+        public void StartNewGame()
         {
             SceneManager.LoadScene(startSceneInt);
         }
 
         //open about menu
-        public void OpenSubMenu(GameObject subMenu)
+        public void OpenCreditsMenu()
         {
             mainMenu.SetActive(false);
-            subMenu.SetActive(true);
+            creditsMenu.SetActive(true);
+            creditsBackButton.Select();
         }
 
         //go back to main menu
@@ -44,10 +40,8 @@ namespace Jonas.UI.MainUI
         {
             mainMenu.SetActive(true);
 
-            foreach (GameObject subMenu in subMenus)
-            {
-                subMenu.SetActive(false);
-            }
+            creditsMenu.SetActive(false);
+            creditsButton.Select();
         }
 
         //quit the application
@@ -55,11 +49,6 @@ namespace Jonas.UI.MainUI
         {
             Application.Quit();
             Debug.Log("Quit game.");
-        }
-
-        public void PlayButtonClickSound()
-        {
-            AudioSource.PlayOneShot(buttonClick);
         }
     }
 }

@@ -1,14 +1,24 @@
 using Game.FirstPerson;
+using Jonas.UI.ShopUI;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class RadiationMask : MonoBehaviour
 {
+    [SerializeField] private Upgrade damageReduction;
+    [SerializeField] private Upgrade durability;
+    
     public PlayerInputReader playerInputReader;
     public bool IsEquipped = false;
 
+    [Tooltip("Durability per Upgrade")]
+    [SerializeField] private int durabilityPerUpgrade = 25;
+    [Tooltip("Minimal damage")]
+    [SerializeField] private int minDamage = 0;
+
     public int maxCharge = 100;
+
+    public int MaxCharge => maxCharge + durability.currentUpgradeLevel * durabilityPerUpgrade;
     public int currentCharge = 100;
 
     public Image radiationMaskImageFill;
@@ -28,24 +38,20 @@ public class RadiationMask : MonoBehaviour
 
     public int AbsorbDamage(int damageAmount)
     {
-        if(currentCharge <= 0)
+        if (currentCharge <= 0)
         {
             return damageAmount;
         }
 
-        if(damageAmount <= currentCharge)
-        {
-            currentCharge -= damageAmount;
-            radiationMaskImageFill.fillAmount = (float)currentCharge / maxCharge;
-            return 0;
-        }
-        else
-        {
-            int remainingDamage = damageAmount - currentCharge;
-            currentCharge = 0;
-            radiationMaskImageFill.fillAmount = 0f;
-            return remainingDamage;
-        }
+        currentCharge -= 1;
+        
+        //damage reduction upgrade
+        damageAmount -= damageReduction.currentUpgradeLevel;
+        if (damageAmount <= minDamage) damageAmount = minDamage; //damage cap
+        
+        radiationMaskImageFill.fillAmount = Mathf.Clamp(currentCharge / MaxCharge, 0f, 1f);
+        
+        return damageAmount; 
     }
 
 }

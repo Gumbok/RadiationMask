@@ -50,6 +50,9 @@ GameObject:
   - component: {fileID: -6262286451350623621}
   - component: {fileID: 5983059485289692660}
   - component: {fileID: 712317117226374226}
+  - component: {fileID: 6344961783713179552}
+  - component: {fileID: 6133727718375720454}
+  - component: {fileID: 2040942808088333478}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -221,6 +224,7 @@ MonoBehaviour:
   movement: {fileID: 2042634124711268945}
   inputReader: {fileID: 712317117226374226}
   health: {fileID: 5983059485289692660}
+  money: {fileID: 0}
   playerXP: {fileID: -6262286451350623621}
   interactor: {fileID: 1102476305701531369}
   cameraFollowTarget: {fileID: 9153709304627032335}
@@ -288,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2206a261747a1d44a2ec53140852771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  radiationMask: {fileID: 0}
   hearts: 3
   startAtFullHealth: 1
   currentFragments: 0
@@ -310,10 +315,59 @@ MonoBehaviour:
   jumpPath: Player/Jump
   sprintPath: Player/Sprint
   crouchPath: Player/Crouch
+  maskTogglePath: Player/MaskToggle
   interactPath: Player/Interact
   attackPath: Player/Attack
   inventoryPath: Player/Inventory
   lookDetectEpsilon: 0.0015
+--- !u!114 &6344961783713179552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993226377546199029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f3e227a8789d6248a49744de7c199d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  damageReduction: {fileID: 11400000, guid: ed8bd8dc04043d34981ffab5186f93a7, type: 2}
+  durability: {fileID: 11400000, guid: 73157ee2a49942a4d9e81cf223efd00c, type: 2}
+  playerInputReader: {fileID: 712317117226374226}
+  IsEquipped: 0
+  durabilityPerUpgrade: 25
+  minDamage: 0
+  maxCharge: 20
+  currentCharge: 20
+  radiationMaskImageFill: {fileID: 0}
+--- !u!114 &6133727718375720454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993226377546199029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2e9cf9eedf6c941ad33d429f8ccce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerInputReader: {fileID: 712317117226374226}
+  carryPivot: {fileID: 3307286125332240993}
+--- !u!114 &2040942808088333478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993226377546199029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a382a4ce8f014f1d8dad86d3bd206872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
+  money: 0
 --- !u!1 &3813802298415839994
 GameObject:
   m_ObjectHideFlags: 0
