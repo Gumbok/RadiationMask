@@ -30,7 +30,6 @@ namespace Jonas.UI.ShopUI
 
         public void Interact(in Interactor interactor)
         {
-            Debug.Log("1");
             ShopUI.OpenShop();
         }
 

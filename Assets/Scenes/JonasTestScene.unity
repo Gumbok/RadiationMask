@@ -8128,6 +8128,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3162449234227023485, guid: c798f5567803c994ea571a362fb91436, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1918379225}
     - target: {fileID: 3253731425864470978, guid: c798f5567803c994ea571a362fb91436, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8168,6 +8172,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4828602994579092482, guid: c798f5567803c994ea571a362fb91436, type: 3}
+      propertyPath: interactor
+      value: 
+      objectReference: {fileID: 1918379234}
     - target: {fileID: 5703150128806281435, guid: c798f5567803c994ea571a362fb91436, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8287,8 +8295,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6918668354216032761, guid: c798f5567803c994ea571a362fb91436, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1456468755}
   m_SourcePrefab: {fileID: 100100000, guid: c798f5567803c994ea571a362fb91436, type: 3}
+--- !u!1 &1456468754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918668354216032761, guid: c798f5567803c994ea571a362fb91436, type: 3}
+  m_PrefabInstance: {fileID: 1456468753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1456468755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456468754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f120d5e05fa41e9a1ee1824a0f0c81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoneyUI
+  moneyText: {fileID: 0}
 --- !u!1 &1475902345
 GameObject:
   m_ObjectHideFlags: 0
@@ -11424,6 +11453,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3e227a8789d6248a49744de7c199d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &1918379234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1102476305701531369, guid: 096ab2fd8a8e968488bd0c42a97faa9b, type: 3}
+  m_PrefabInstance: {fileID: 1355504642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66169bac3da61384984b58f352dd4b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.FirstPerson.FirstPersonInteractor
 --- !u!1 &1994926212
 GameObject:
   m_ObjectHideFlags: 0
@@ -13571,6 +13611,18 @@ PrefabInstance:
     - target: {fileID: 6197467194974092454, guid: 194f39613ed57a6428f6b2714f2c2883, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430652438812809729, guid: 194f39613ed57a6428f6b2714f2c2883, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430652438812809729, guid: 194f39613ed57a6428f6b2714f2c2883, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430652438812809729, guid: 194f39613ed57a6428f6b2714f2c2883, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.7735849
       objectReference: {fileID: 0}
     - target: {fileID: 8653909171123829391, guid: 194f39613ed57a6428f6b2714f2c2883, type: 3}
       propertyPath: m_Pivot.x

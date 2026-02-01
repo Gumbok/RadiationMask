@@ -37,7 +37,6 @@ namespace Jonas.UI.ShopUI
 
         public void OpenShop()
         {
-            Debug.Log("2");
             IsOpened = true;
             shopUpgradeMenu.SetActive(true);
             
