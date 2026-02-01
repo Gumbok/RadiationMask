@@ -38,8 +38,6 @@ namespace Jonas.UI.ShopUI
                 _buttonDict.Add(upgrade, newUpgradeButton.GetComponent<Button>());
             }
             Destroy(upgradeButtonTemplate);
-            
-            gameObject.SetActive(false);
         }
 
         //Select FirstButton for Interaction

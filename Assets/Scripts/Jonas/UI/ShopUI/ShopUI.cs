@@ -1,3 +1,4 @@
+using System;
 using Game.FirstPerson;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace Jonas.UI.ShopUI
             }
         }
 
+        [SerializeField] private GameObject shopUpgradeMenu;
+
         private GameObject _player;
         private GameObject Player
         {
@@ -24,10 +27,19 @@ namespace Jonas.UI.ShopUI
                 return _player;
             }
         }
-        
+
+        [NonSerialized] public bool IsOpened = false;
+
+        private void Awake()
+        {
+            shopUpgradeMenu.SetActive(false);
+        }
+
         public void OpenShop()
         {
-            gameObject.SetActive(true);
+            Debug.Log("2");
+            IsOpened = true;
+            shopUpgradeMenu.SetActive(true);
             
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -38,11 +50,12 @@ namespace Jonas.UI.ShopUI
 
         public void CloseShop()
         {
+            IsOpened = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             Player.GetComponent<FirstPersonMovement>().enabled = true;
             Player.GetComponent<FirstPersonLook>().enabled = true;
-            gameObject.SetActive(false);
+            shopUpgradeMenu.SetActive(false);
         }
     }
 }

@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4838fb909b0aa4aa1cd00bc969f75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Jonas.UI.ShopUI.ShopUI
+  shopUpgradeMenu: {fileID: 7412304505520771159}
 --- !u!114 &7985324794939974375
 MonoBehaviour:
   m_ObjectHideFlags: 0

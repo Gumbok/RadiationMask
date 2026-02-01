@@ -5,15 +5,22 @@ namespace Jonas.UI.ShopUI
 {
     public class ShopPanel : MonoBehaviour, IHoldInteractable
     {
-        [Tooltip("Parent UI GameObject with the shop interface.")]
-        public ShopUI shopUI;
+        private ShopUI _shopUI;
+        private ShopUI ShopUI
+        {
+            get
+            {
+                if (!_shopUI) _shopUI = GameObject.Find("ShopUI").GetComponent<ShopUI>();
+                return _shopUI;
+            }
+        }
 
         [SerializeField] private float interactionHoldTime = 0.25f;
     
         //can open Shop Panel
         public bool CanInteract(in Interactor interactor)
         {
-            return !shopUI.gameObject.activeSelf;
+            return !ShopUI.IsOpened;
         }
 
         public string GetPrompt(in Interactor interactor)
@@ -23,7 +30,8 @@ namespace Jonas.UI.ShopUI
 
         public void Interact(in Interactor interactor)
         {
-            shopUI.OpenShop();
+            Debug.Log("1");
+            ShopUI.OpenShop();
         }
 
         public float InteractionHoldTimes => interactionHoldTime;
