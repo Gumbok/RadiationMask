@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public enum HealthChangeReason
@@ -86,7 +87,7 @@ public sealed class PlayerHealth : MonoBehaviour, IDamageable
 
         if(radiationMask != null && radiationMask.IsEquipped)
         {
-           damageAmount= radiationMask.AbsorbDamage(damageAmount);
+           damageAmount= radiationMask.AbsorbDamage(damageAmount, damageInfo.Source.GetComponent<Radiation>().radiationType);
         }
 
         int prev = currentFragments;
@@ -100,6 +101,8 @@ public sealed class PlayerHealth : MonoBehaviour, IDamageable
 
         if (prev > 0 && next <= 0)
             OnDied?.Invoke(damageInfo);
+
+        SceneManager.LoadScene("StartMenu");
     }
 
     public int Heal(int amount)

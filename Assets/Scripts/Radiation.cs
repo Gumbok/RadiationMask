@@ -35,6 +35,7 @@ public class Radiation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag != "Player") return;
         other.TryGetComponent<PlayerHealth>(out playerHealth);
         if (playerHealth != null)
         {     
@@ -50,13 +51,15 @@ public class Radiation : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.tag != "Player") return;
         if (playerHealth != null)
-        {
+        {      
+            if (radiationSound != null && radiationSound.isPlaying)
+            radiationSound.Stop();
             StopCoroutine(coroutine);
             playerHealth = null;
         }
-        if (radiationSound != null && radiationSound.isPlaying)
-            radiationSound.Stop();
+
     }
 
 

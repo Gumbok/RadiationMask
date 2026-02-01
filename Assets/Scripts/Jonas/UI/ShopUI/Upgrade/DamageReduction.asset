@@ -37,4 +37,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentUpgradeLevel: 0
-  maxUpgradeLevel: 5
+  maxUpgradeLevel: 2

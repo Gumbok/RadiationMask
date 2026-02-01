@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3307286125332240993}
-  m_Layer: 9
-  m_Name: DropOrigin
+  m_Layer: 6
+  m_Name: CarryPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1534519433109922784}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.15, y: 1, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 6344961783713179552}
   - component: {fileID: 6133727718375720454}
   - component: {fileID: 2040942808088333478}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d84a4bc888b3149a76f2e2153d8a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonMovement
-  input: {fileID: 0}
+  input: {fileID: 712317117226374226}
   yawRoot: {fileID: 1720077282274454712}
   cameraRoot: {fileID: 9153709304627032335}
   walkSpeed: 4.5
@@ -174,7 +174,7 @@ MonoBehaviour:
   gravity: -18
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   groundCheckOffset: 0.08
   groundCheckRadiusScale: 0.95
   standingHeight: 2
@@ -224,7 +224,7 @@ MonoBehaviour:
   movement: {fileID: 2042634124711268945}
   inputReader: {fileID: 712317117226374226}
   health: {fileID: 5983059485289692660}
-  money: {fileID: 0}
+  money: {fileID: 2040942808088333478}
   playerXP: {fileID: -6262286451350623621}
   interactor: {fileID: 1102476305701531369}
   cameraFollowTarget: {fileID: 9153709304627032335}
@@ -292,8 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2206a261747a1d44a2ec53140852771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  radiationMask: {fileID: 0}
-  hearts: 3
+  radiationMask: {fileID: 6344961783713179552}
+  hearts: 5
   startAtFullHealth: 1
   currentFragments: 0
 --- !u!114 &712317117226374226
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1993226377546199029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3e227a8789d6248a49744de7c199d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 91dfdfab2fbcdfc41be06913e57a1c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   damageReduction: {fileID: 11400000, guid: ed8bd8dc04043d34981ffab5186f93a7, type: 2}
@@ -338,8 +338,9 @@ MonoBehaviour:
   IsEquipped: 0
   durabilityPerUpgrade: 25
   minDamage: 0
-  maxCharge: 20
-  currentCharge: 20
+  baseDamageReduction: 1
+  baseMaxCharge: 100
+  currentCharge: 100
   radiationMaskImageFill: {fileID: 0}
 --- !u!114 &6133727718375720454
 MonoBehaviour:
@@ -367,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a382a4ce8f014f1d8dad86d3bd206872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
-  money: 0
+  _money: 0
 --- !u!1 &3813802298415839994
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9153709304627032335}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: CameraRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +411,7 @@ GameObject:
   - component: {fileID: 2130466280808842879}
   - component: {fileID: 7384758592680346540}
   - component: {fileID: 5065864891332090639}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

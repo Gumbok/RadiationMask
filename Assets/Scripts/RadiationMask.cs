@@ -16,12 +16,14 @@ public class RadiationMask : MonoBehaviour
     [Tooltip("Minimal damage")]
     [SerializeField] private int minDamage = 0;
 
-    public int maxCharge = 100;
+    public int baseDamageReduction = 1;
+    public int baseMaxCharge = 100;
 
-    public int MaxCharge => maxCharge + durability.currentUpgradeLevel * durabilityPerUpgrade;
+    public int MaxCharge => baseMaxCharge + durability.currentUpgradeLevel * durabilityPerUpgrade;
     public int currentCharge = 100;
 
     public Image radiationMaskImageFill;
+    public Image radiationMaskImageToggle;
 
     private void Update()
     {
@@ -29,27 +31,41 @@ public class RadiationMask : MonoBehaviour
         {
             ToggleEqipped();
         }
+
+
+    }
+
+    public void RefillMask()
+    {
+        currentCharge = MaxCharge;
+        radiationMaskImageFill.fillAmount = 1f;
     }
 
     void ToggleEqipped()
     {
         IsEquipped = !IsEquipped;
+        radiationMaskImageToggle.enabled = !IsEquipped;
     }
 
-    public int AbsorbDamage(int damageAmount)
+    public int AbsorbDamage(int damageAmount, Radiation.RadiationType radiationType)
     {
         if (currentCharge <= 0)
         {
             return damageAmount;
         }
 
-        currentCharge -= 1;
-        
+        if(radiationType == Radiation.RadiationType.Low)
+            currentCharge -= 1;
+        else if(radiationType == Radiation.RadiationType.Medium)
+            currentCharge -= 2;
+        else if(radiationType == Radiation.RadiationType.High)
+            currentCharge -= 3;
+
         //damage reduction upgrade
-        damageAmount -= damageReduction.currentUpgradeLevel;
+        damageAmount -= baseDamageReduction + damageReduction.currentUpgradeLevel;
         if (damageAmount <= minDamage) damageAmount = minDamage; //damage cap
         
-        radiationMaskImageFill.fillAmount = Mathf.Clamp(currentCharge / MaxCharge, 0f, 1f);
+        radiationMaskImageFill.fillAmount = Mathf.Clamp((float)currentCharge / (float)MaxCharge, 0f, 1f);
         
         return damageAmount; 
     }
