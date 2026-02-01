@@ -32,8 +32,7 @@ namespace Game.UI
         private void TryBind(PlayerFacade player)
         {
             if (!player) return;
-
-
+            
             if (interactionPromptUI)
                interactionPromptUI.BindPlayer(player.Interactor);
 
