@@ -5,8 +5,12 @@ using UnityEngine.VFX;
 public class Radiation : MonoBehaviour
 {
     public VisualEffect radiationEffect;
+    public AudioSource radiationSound;
     public RadiationType radiationType;
     public float damageInterval = 1f;
+
+
+
     [SerializeField, Range(0, 100)] private int strength = 30;
     public int Strength
     {
@@ -33,10 +37,15 @@ public class Radiation : MonoBehaviour
     {
         other.TryGetComponent<PlayerHealth>(out playerHealth);
         if (playerHealth != null)
-        {
+        {     
+            if (radiationSound != null && !radiationSound.isPlaying)
+            radiationSound.Play();
             coroutine = DamageOverTime();
             StartCoroutine(coroutine);
         }
+
+
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -46,6 +55,8 @@ public class Radiation : MonoBehaviour
             StopCoroutine(coroutine);
             playerHealth = null;
         }
+        if (radiationSound != null && radiationSound.isPlaying)
+            radiationSound.Stop();
     }
 
 

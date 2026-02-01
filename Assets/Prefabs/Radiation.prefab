@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   radiationEffect: {fileID: 5202580420265637438}
+  radiationSound: {fileID: 0}
   radiationType: 2
   damageInterval: 1
   strength: 100
